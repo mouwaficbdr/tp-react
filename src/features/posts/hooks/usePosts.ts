@@ -32,8 +32,8 @@ export function usePosts(filters: PostsFilters) {
       return merged;
     },
     initialData: () => {
-      const local = qc.getQueryData<PostDto[]>(['localPosts']) ?? [];
-      return local;
+      const local = qc.getQueryData<PostDto[]>(['localPosts']);
+      return local?.length ? local : undefined;
     },
     refetchOnWindowFocus: false, // Évite de re-mélanger juste en changeant d'onglet
   });
